@@ -1,0 +1,30 @@
+/* Ensure Chat Messenger overlay respects LimeSurvey 6 Bootstrap 5 Navbar and Modals */
+chat-messenger {
+  z-index: 1050;
+  --df-messenger-font-family: var(--bs-body-font-family, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  --df-messenger-primary-color: var(--bs-primary, #0d6efd);
+  --df-messenger-chat-window-width: 420px;
+}
+
+/* Question Highlight Pulse Animation when Co-Pilot focuses on a question */
+.ls-copilot-highlight {
+  animation: lsCopilotPulse 1.5s ease-in-out infinite alternate;
+  border-radius: 0.375rem;
+}
+
+@keyframes lsCopilotPulse {
+  0% {
+    box-shadow: 0 0 0 2px rgba(13, 110, 253, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 6px rgba(13, 110, 253, 0.6);
+  }
+}
+
+/* Ensure LimeSurvey main content doesn't get obscured in slide-over mode on large screens */
+@media (min-width: 992px) {
+  body.ls-copilot-active #outerframeContainer {
+    transition: margin-right 0.3s ease;
+    margin-right: 420px;
+  }
+}

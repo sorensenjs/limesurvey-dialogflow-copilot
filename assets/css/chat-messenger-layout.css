@@ -1,0 +1,166 @@
+/**
+ * Baseline styles for Chat Messenger slide-in and slide-over modes and
+ * responsive styles.
+ */
+body {
+  transition: padding-right 0.4s ease-in-out;
+}
+
+chat-messenger {
+  --chat-messenger-internal-chat-border-radius: calc(var(--chat-messenger-shape--corner-value-large) * 2);
+  border-radius: var(--chat-messenger-internal-chat-border-radius);
+}
+
+chat-messenger.slide-over {
+  --chat-messenger-internal-chat-border-radius: 0;
+  border-radius: 0;
+  position: absolute;
+  height: 100vh;
+  max-height: 100vh;
+  max-width: 100vw;
+  right: 16px;
+  bottom: 16px;
+  min-width: 360px;
+}
+
+chat-messenger.slide-in {
+  --chat-messenger-internal-chat-border-radius: 0;
+  border-radius: 0;
+  position: fixed;
+  height: 100vh;
+  max-height: 100vh;
+  max-width: 100vw;
+  right: 0;
+  bottom: 0;
+  min-width: 360px;
+}
+
+chat-messenger.slide-over,
+chat-messenger.slide-in {
+  --chat-messenger-internal-chat-wrapper-transition: transform 0.4s ease-in-out, visibility 0s linear 0s;
+  visibility: visible;
+}
+
+chat-messenger.slide-over.messenger-hidden,
+chat-messenger.slide-in.messenger-hidden {
+  position: fixed;
+  right: 0;
+  --chat-messenger-internal-chat-wrapper-transform: translateX(100%);
+  --chat-messenger-internal-chat-wrapper-visibility: hidden;
+  --chat-messenger-internal-chat-wrapper-transition: transform 0.4s ease-in-out, visibility 0s linear 0.4s;
+}
+
+/* "Compact" viewport. */
+@media screen and (max-width: 600px), screen and (orientation: landscape) and (max-height: 600px) and (max-width: 960px) {
+  chat-messenger.slide-over.messenger-hidden,
+  chat-messenger.slide-in.messenger-hidden {
+    position: fixed;
+    bottom: 0 !important;
+    --chat-messenger-internal-chat-wrapper-transform: translate(-50%, 50%);
+  }
+}
+
+chat-messenger.slide-over {
+  height: 100vh;
+  max-height: 100vh;
+  max-width: 100vw;
+  min-width: 360px;
+}
+
+/* "Compact" viewport. */
+@media (max-width: 600px) {
+  chat-messenger.slide-over,
+  chat-messenger.slide-in {
+    width: 100vw;
+  }
+
+  body:has(chat-messenger.slide-over:not(.messenger-hidden)),
+  body:has(chat-messenger.slide-in:not(.messenger-hidden)) {
+    overflow: hidden;
+  }
+
+  chat-toggle-dialog-button {
+    display: none;
+  }
+}
+
+/* "Medium" viewport. */
+@media (min-width: 600px) and (max-width: 840px) {
+  chat-messenger.slide-over,
+  chat-messenger.slide-in {
+    width: 360px;
+  }
+
+  body:has(chat-messenger.slide-in:not(.messenger-hidden)) {
+    padding-right: 360px;
+  }
+}
+
+/* "Medium" and smaller viewports. */
+@media (max-width: 840px) {
+  chat-messenger.slide-over,
+  chat-messenger.slide-in {
+    bottom: 0;
+    right: 0;
+  }
+}
+
+/* "Expanded" and larger viewports. */
+@media (min-width: 840px) {
+  chat-messenger.slide-over:not(.messenger-hidden) {
+    bottom: 16px;
+    right: 16px;
+  }
+}
+
+/* "Expanded" and larger viewports. */
+@media (min-width: 840px) {
+  chat-messenger.slide-over {
+    --chat-messenger-internal-chat-border-radius: calc(var(--chat-messenger-shape--corner-value-large) * 2);
+    border-radius: var(--chat-messenger-internal-chat-border-radius);
+  }
+}
+
+/* "Expanded" viewport. */
+@media (min-width: 840px) and (max-width: 1200px) {
+  chat-messenger.slide-over {
+    height: var(--chat-messenger-internal-chat-window-height)
+  }
+  chat-messenger.slide-over,
+  chat-messenger.slide-in {
+    width: var(--chat-messenger-internal-chat-window-width);
+  }
+  body:has(chat-messenger.slide-in:not(.messenger-hidden)) {
+    padding-right: var(--chat-messenger-internal-chat-window-width);
+  }
+}
+
+/* "Large" viewport. */
+@media (min-width: 1200px) and (max-width: 1600px) {
+  chat-messenger.slide-over {
+    height: 640px;
+  }
+  chat-messenger.slide-over,
+  chat-messenger.slide-in {
+    width: 412px;
+  }
+
+  body:has(chat-messenger.slide-in:not(.messenger-hidden)) {
+    padding-right: 412px;
+  }
+}
+
+/* "Extra large" viewport. */
+@media (min-width: 1600px) {
+  chat-messenger.slide-over {
+    height: 800px;
+  }
+  chat-messenger.slide-over,
+  chat-messenger.slide-in {
+    width: 412px;
+  }
+
+  body:has(chat-messenger.slide-in:not(.messenger-hidden)) {
+    padding-right: 412px;
+  }
+}

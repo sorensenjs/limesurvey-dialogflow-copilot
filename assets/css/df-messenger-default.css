@@ -1,0 +1,273 @@
+:root {
+  /* Overarching values. */
+  --chat-messenger-internal-primary-color: rgb(11, 87, 208);
+  --chat-messenger-internal-border-color: rgb(196, 199, 197);
+  --chat-messenger-internal-element-font-color: rgb(68, 71, 70);
+
+  /* Chat. */
+  --chat-messenger-internal-chat-border: 1px solid var(--chat-messenger-internal-border-color);
+  --chat-messenger-internal-chat-border-radius: 0;
+  --chat-messenger-internal-chat-padding: 24px 0 8px 0;
+  --chat-messenger-internal-chat-scroll-button-enabled-display: flex;
+  --chat-messenger-internal-chat-scroll-button-align: flex-end;
+  --chat-messenger-internal-chat-scroll-button-container-padding: 8px 16px;
+  --chat-messenger-internal-chat-scroll-button-background: rgb(168, 199, 250);
+  --chat-messenger-internal-chat-scroll-button-font-color: rgb(4, 30, 73);
+  --chat-messenger-internal-chat-scroll-button-text-display: none;
+  --chat-messenger-internal-chat-scroll-button-padding: 8px;
+  --chat-messenger-internal-chat-function-call-button-background: rgb(168, 199, 250);
+  --chat-messenger-internal-chat-function-call-button-font-color: rgb(4, 30, 73);
+
+  /* Bubble. */
+  --chat-messenger-internal-chat-window-width: 320px;
+  --chat-messenger-internal-chat-window-height: 560px;
+  --chat-messenger-internal-chat-padding-minimized: 8px;
+
+  /* Titlebar. */
+  --chat-messenger-internal-focus-color-contrast: var(--chat-messenger-internal-focus-color, var(--chat-messenger-internal-default-focus-color));
+  --chat-messenger-internal-titlebar-border-bottom: 1px solid var(--chat-messenger-internal-border-color);
+  --chat-messenger-internal-titlebar-icon-font-color: var(--chat-messenger-internal-icon-font-color, var(--chat-messenger-internal-default-icon-font-color));
+  --chat-messenger-internal-titlebar-subtitle-font-color: var(--chat-messenger-internal-secondary-font-color, var(--chat-messenger-internal-default-secondary-font-color));
+  --chat-messenger-internal-titlebar-padding: 10px 24px;
+  --chat-messenger-internal-titlebar-subtitle-font-size: 12px;
+  --chat-messenger-internal-titlebar-subtitle-line-height: 16px;
+  --chat-messenger-internal-titlebar-button-color-inactive: var(--chat-messenger-internal-icon-font-color, var(--chat-messenger-internal-default-icon-font-color));
+  --chat-messenger-internal-titlebar-button-background-active: rgb(241, 244, 248);
+
+  /* Messages. */
+  --chat-messenger-internal-message-padding: 16px;
+  --chat-messenger-internal-message-border-radius: 16px;
+  --chat-messenger-internal-message-bot-border-top-left-radius: 0;
+  --chat-messenger-internal-message-bot-stack-border-top-left-radius: 0;
+  --chat-messenger-internal-message-bot-stack-border-bottom-left-radius: 0;
+  --chat-messenger-internal-message-user-border-top-right-radius: 0;
+  --chat-messenger-internal-message-user-stack-border-top-right-radius: 0;
+  --chat-messenger-internal-message-user-stack-border-bottom-right-radius: 0;
+  --chat-messenger-internal-message-stack-spacing: 4px;
+  --chat-messenger-internal-message-inline-citation-background: var(--chat-messenger-internal-message-user-background);
+  --chat-messenger-internal-message-inline-citation-font-color: rgb(31, 31, 31);
+
+  /* User Input. */
+  --chat-messenger-internal-input-long-text-warning-display: block;
+  --chat-messenger-internal-input-padding: 16px 8px 24px 24px;
+  --chat-messenger-internal-input-border-top: none;
+  --chat-messenger-internal-input-box-border: 1px solid var(--chat-messenger-internal-border-color);
+  --chat-messenger-internal-input-box-border-radius: 999px;
+  --chat-messenger-internal-input-box-padding: 16px 16px 32px 16px;
+  --chat-messenger-internal-input-box-focus-padding: 15px 31px;
+  --chat-messenger-internal-send-icon-offset-y: 2px;
+
+  /* Links (in MD / HTML). */
+  --chat-messenger-internal-link-decoration: none;
+  --chat-messenger-internal-link-font-color: var(--chat-messenger-internal-primary-color);
+  --chat-messenger-internal-link-visited-font-color: var(--chat-messenger-internal-primary-color);
+  --chat-messenger-internal-link-hover-font-color: var(--chat-messenger-internal-primary-color);
+  --chat-messenger-internal-link-background-color: rgb(255, 255, 255);
+  --chat-messenger-internal-link-padding: 0 4px;
+  --chat-messenger-internal-link-border: 1px solid var(--chat-messenger-internal-primary-color);
+  --chat-messenger-internal-link-border-radius: 4px;
+
+  /* Tables (in MD / HTML). */
+  --chat-messenger-internal-table-border-color: rgb(230, 230, 230);
+  --chat-messenger-internal-table-padding: 12px 16px;
+  --chat-messenger-internal-table-font-size: 14px;
+  --chat-messenger-internal-table-border-radius: 16px;
+  --chat-messenger-internal-table-header-background: rgb(242, 242, 242);
+  --chat-messenger-internal-table-header-padding: 12px 16px;
+  --chat-messenger-internal-table-header-font-size: 14px;
+  --chat-messenger-internal-table-header-font-weight: 500;
+  --chat-messenger-internal-table-header-border-top: 1px solid var(--chat-messenger-internal-table-border-color);
+  --chat-messenger-internal-table-header-border-bottom: 1px solid var(--chat-messenger-internal-table-border-color);
+  --chat-messenger-internal-table-header-border-left-first: 1px solid var(--chat-messenger-internal-table-border-color);
+  --chat-messenger-internal-table-header-border-right-last: 1px solid var(--chat-messenger-internal-table-border-color);
+  --chat-messenger-internal-table-border-bottom: 1px solid var(--chat-messenger-internal-table-border-color);
+  --chat-messenger-internal-table-border-left-first: 1px solid var(--chat-messenger-internal-table-border-color);
+  --chat-messenger-internal-table-border-right-last: 1px solid var(--chat-messenger-internal-table-border-color);
+
+  /* Card. */
+  --chat-messenger-internal-card-box-shadow: none;
+  --chat-messenger-internal-card-border: none;
+  --chat-messenger-internal-card-border-radius: 16px;
+  --chat-messenger-internal-card-border-top-left-radius: 0;
+  --chat-messenger-internal-card-stack-border-bottom-left-radius: 0;
+  --chat-messenger-internal-card-stack-border-top-left-radius: 0;
+
+  /* Chips. */
+  --chat-messenger-internal-chips-box-shadow: none;
+  --chat-messenger-internal-chips-font-color: var(--chat-messenger-internal-element-font-color);
+  --chat-messenger-internal-chips-icon-font-color: var(--chat-messenger-internal-element-font-color);
+  --chat-messenger-internal-chips-border-radius: 8px;
+
+  /* Files. */
+  --chat-messenger-internal-files-box-shadow: none;
+
+  /* Citations. */
+  --chat-messenger-internal-citations-font-color: var(--chat-messenger-internal-element-font-color);
+  --chat-messenger-internal-citations-border-color: var(--chat-messenger-internal-border-color);
+  --chat-messenger-internal-citations-border-radius: 999px;
+  --chat-messenger-internal-citations-padding: 4px 16px;
+  --chat-messenger-internal-citations-icon-offset: -8px;
+  --chat-messenger-internal-citations-icon-font-size: 24px;
+  --chat-messenger-internal-citations-message-display: none;
+
+  /* Button. */
+  --chat-messenger-internal-button-border: 1px solid var(--chat-messenger-internal-border-color);
+  --chat-messenger-internal-button-padding: 8px;
+
+  /* Image. */
+  --chat-messenger-internal-image-border-radius: 16px;
+
+  /* Video. */
+  --chat-messenger-internal-video-border-radius: 16px;
+  --chat-messenger-internal-video-border: 1px solid var(--chat-messenger-internal-border-color);
+
+  /* List. */
+  --chat-messenger-internal-list-padding: 16px;
+
+  /* Feedback. */
+  --chat-messenger-internal-message-rich-feedback-spacing: 16px;
+  --chat-messenger-internal-message-rich-feedback-padding: 16px;
+  --chat-messenger-internal-message-rich-feedback-background: rgb(255, 255, 255);
+  --chat-messenger-internal-message-rich-feedback-border-radius: 16px;
+  --chat-messenger-internal-message-rich-feedback-chips-spacing: 8px;
+  --chat-messenger-internal-message-rich-feedback-chips-background: rgb(255, 255, 255);
+  --chat-messenger-internal-message-rich-feedback-chips-background-active: rgba(68, 71, 70, 0.12);
+  --chat-messenger-internal-message-rich-feedback-chips-font-color: var(--chat-messenger-internal-element-font-color);
+  --chat-messenger-internal-message-rich-feedback-chips-font-color-active: var(--chat-messenger-internal-element-font-color);
+  --chat-messenger-internal-message-rich-feedback-submit-align: flex-start;
+  --chat-messenger-internal-message-rich-feedback-submit-font-color: var(--chat-messenger-internal-element-font-color);
+  --chat-messenger-internal-message-feedback-icon-distance: 0;
+  --chat-messenger-internal-message-feedback-icon-padding: 0;
+  --chat-messenger-internal-message-feedback-spacing: 4px;
+  --chat-messenger-internal-message-feedback-thumbs-padding-left: 8px;
+}
+
+:root {
+  /* Chat Messenger default light theme variables. */
+  --chat-messenger-color--surface: #f8fafd;
+  --chat-messenger-color--surface-container: #ffffff;
+  --chat-messenger-color--surface-container-high: #f0f4f9;
+  --chat-messenger-color--primary: #303030;
+  --chat-messenger-color--primary-container: #e9eef6;
+  --chat-messenger-color--secondary: #dde3ea;
+  --chat-messenger-color--on-surface: #1f1f1f;
+  --chat-messenger-color--on-surface-variant: #444746;
+  --chat-messenger-color--on-primary: #f2f2f2;
+  --chat-messenger-color--on-primary-container: #1f1f1f;
+  --chat-messenger-color--on-secondary: #444746;
+  --chat-messenger-color--state-layer-on-surface: rgba(31, 31, 31, 0.08);
+  --chat-messenger-color--state-layer-on-primary: rgba(255, 255, 255, 0.08);
+  --chat-messenger-color--state-layer-on-secondary: rgba(31, 31, 31, 0.08);
+  --chat-messenger-color--state-layer-scrim: rgba(0, 0, 0, 0.16);
+  --chat-messenger-color--state-on-surface-mute: rgba(68, 71, 70, 0.38);
+  --chat-messenger-color--outline: #c4c7c5;
+  --chat-messenger-color--outline-variant: rgba(116, 119, 117, 0.16);
+  --chat-messenger-color--outline-active: #747775;
+  --chat-messenger-color--error: #b3261e;
+  --chat-messenger-color--error-container: #f9dedc;
+  --chat-messenger-color--on-error-container: #8c1d18;
+  --chat-messenger-color--link: #0b57d0;
+
+  /* Shape */
+  --chat-messenger-shape--corner-value-small: 8px;
+  --chat-messenger-shape--corner-value-medium: 16px;
+  --chat-messenger-shape--corner-value-large: 20px;
+  --chat-messenger-shape--corner-value-extra-large: 28px;
+  --chat-messenger-shape--corner-fully-rounded: 100px;
+  --chat-messenger-elevation: 0 1px 2px 0 rgba(0, 0, 0, 0.30), 0 2px 6px 2px rgba(0, 0, 0, 0.15);
+
+  /* Typography */
+  --chat-messenger-font-family: 'Google Sans Text';
+  --chat-messenger-typescale--title-large-font-size: 18px;
+  --chat-messenger-typescale--title-large-font-weight: 400;
+  --chat-messenger-typescale--title-large-line-height: 24px;
+  --chat-messenger-typescale--title-large-letter-spacing: 0;
+  --chat-messenger-typescale--title-medium-font-size: 16px;
+  --chat-messenger-typescale--title-medium-font-weight: 500;
+  --chat-messenger-typescale--title-medium-line-height: 24px;
+  --chat-messenger-typescale--title-medium-letter-spacing: 0;
+  --chat-messenger-typescale--title-small-font-size: 14px;
+  --chat-messenger-typescale--title-small-font-weight: 500;
+  --chat-messenger-typescale--title-small-line-height: 20px;
+  --chat-messenger-typescale--title-small-letter-spacing: 0;
+  --chat-messenger-typescale--body-large-font-size: 16px;
+  --chat-messenger-typescale--body-large-font-weight: 400;
+  --chat-messenger-typescale--body-large-line-height: 24px;
+  --chat-messenger-typescale--body-large-letter-spacing: 0;
+  --chat-messenger-typescale--body-medium-font-size: 14px;
+  --chat-messenger-typescale--body-medium-font-weight: 400;
+  --chat-messenger-typescale--body-medium-line-height: 20px;
+  --chat-messenger-typescale--body-medium-letter-spacing: 0;
+  --chat-messenger-typescale--body-small-font-size: 12px;
+  --chat-messenger-typescale--body-small-font-weight: 400;
+  --chat-messenger-typescale--body-small-line-height: 16px;
+  --chat-messenger-typescale--body-small-letter-spacing: 0.1px;
+  --chat-messenger-typescale--label-large-font-size: 14px;
+  --chat-messenger-typescale--label-large-font-weight: 500;
+  --chat-messenger-typescale--label-large-line-height: 20px;
+  --chat-messenger-typescale--label-large-letter-spacing: 0;
+  --chat-messenger-typescale--label-medium-font-size: 12px;
+  --chat-messenger-typescale--label-medium-font-weight: 500;
+  --chat-messenger-typescale--label-medium-line-height: 16px;
+  --chat-messenger-typescale--label-medium-letter-spacing: 0.1px;
+  --chat-messenger-typescale--label-small-font-size: 11px;
+  --chat-messenger-typescale--label-small-font-weight: 500;
+  --chat-messenger-typescale--label-small-line-height: 16px;
+  --chat-messenger-typescale--label-small-letter-spacing: 0.1px;
+
+  /* Spacing */
+  --chat-messenger-spacing--half: 4px;
+  --chat-messenger-spacing--one: 8px;
+  --chat-messenger-spacing--one-and-half: 12px;
+  --chat-messenger-spacing--two: 16px;
+  --chat-messenger-spacing--two-and-half: 20px;
+  --chat-messenger-spacing--three: 24px;
+  --chat-messenger-spacing--three-and-half: 28px;
+  --chat-messenger-spacing--four: 32px;
+
+  --chat-messenger-internal-chat-max-width: 1200px;
+  --chat-messenger-internal-message-list-max-width: 840px;
+  --chat-messenger-internal-chat-scroll-button-align: center;
+  --chat-messenger-internal-first-message-margin-top: 0;
+  --chat-messenger-internal-message-padding: 8px 12px;
+  --chat-messenger-internal-message-user-margin-left: 56px;
+  --chat-messenger-internal-message-user-max-width: 540px;
+  --chat-messenger-internal-titlebar-padding: 16px 36px;
+
+  /* Quick actions */
+  --chat-messenger-internal-quick-actions-button-background-color: #f0f4f9;
+
+  /* Images */
+  --chat-messenger-internal-hero-image-aspect-ratio: 148 / 120;
+}
+
+chat-messenger[color-scheme="dark"] {
+  /* Chat Messenger default dark theme variables. */
+  --chat-messenger-color--surface: #1b1b1b;
+  --chat-messenger-color--surface-container: #131314;
+  --chat-messenger-color--surface-container-high: #1e1f20;
+  --chat-messenger-color--primary: #e3e3e3;
+  --chat-messenger-color--primary-container: #282a2c;
+  --chat-messenger-color--secondary: #333537;
+  --chat-messenger-color--on-surface: #e3e3e3;
+  --chat-messenger-color--on-surface-variant: #c4c7c5;
+  --chat-messenger-color--on-primary: #303030;
+  --chat-messenger-color--on-primary-container: #e3e3e3;
+  --chat-messenger-color--on-secondary: #c4c7c5;
+  --chat-messenger-color--state-layer-on-surface: rgba(227, 227, 227, 0.08);
+  --chat-messenger-color--state-layer-on-primary: rgba(6, 46, 111, 0.08);
+  --chat-messenger-color--state-layer-on-secondary: rgba(227, 227, 227, 0.08);
+  --chat-messenger-color--state-layer-scrim: rgba(0, 0, 0, 0.6);
+  --chat-messenger-color--state-on-surface-mute: rgba(196, 199, 197, 0.38);
+  --chat-messenger-color--outline: #444746;
+  --chat-messenger-color--outline-variant: rgba(142, 145, 143, 0.16);
+  --chat-messenger-color--outline-active: #8e918f;
+  --chat-messenger-color--error: #f2b8b5;
+  --chat-messenger-color--error-container: #8c1d18;
+  --chat-messenger-color--on-error-container: #f9dedc;
+  --chat-messenger-color--link: #a8c7fa;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+}
