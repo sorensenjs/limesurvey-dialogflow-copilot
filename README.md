@@ -92,42 +92,102 @@ The plugin includes a built-in server-side token broker endpoint (`/index.php/pl
 
 ---
 
-## 6. Configuring the Dialogflow CX Agent
+## 6. Configuring the Agent in CX Agent Studio / Customer Engagement Suite (CES)
 
-In the **Dialogflow CX Console** or **Vertex AI Search and Conversation**:
+In **Agent Studio** or **Dialogflow CX Console**:
 
-1. Define a **Client-Side Tool** named `limesurvey_copilot` with the following actions:
+### 1. Create Client Function Tools
+Create 4 separate **Client Function** tools (Tools > Create > Type: **Client Function**):
 
-   - **`ls_get_page_questions`**:
-     - **Description**: Retrieves all questions, question texts, mandatory flags, and choice options on the currently visible survey page.
-     - **Output Parameters**:
-       - `surveyId` (string)
-       - `pageQuestions` (list of objects with `code`, `text`, `isMandatory`, `options`)
+1. **`ls_get_page_questions`**:
+   - **Display Name**: `ls_get_page_questions`
+   - **Description**: Inspects the active LimeSurvey page in the user's browser and returns the questions, question codes, and options.
+   - **Parameters**: Object (no required inputs).
+   - **Response**:
+     ```json
+     {
+       "type": "OBJECT",
+       "properties": {
+         "surveyId": { "type": "STRING" },
+         "pageQuestions": {
+           "type": "ARRAY",
+           "items": {
+             "type": "OBJECT",
+             "properties": {
+               "code": { "type": "STRING" },
+               "text": { "type": "STRING" },
+               "isMandatory": { "type": "BOOLEAN" },
+               "options": {
+                 "type": "ARRAY",
+                 "items": {
+                   "type": "OBJECT",
+                   "properties": {
+                     "optionCode": { "type": "STRING" },
+                     "label": { "type": "STRING" }
+                   }
+                 }
+               }
+             }
+           }
+         }
+       }
+     }
+     ```
 
-   - **`ls_answer_question`**:
-     - **Description**: Answers a survey question on the active page (supports text, textarea, radio/single-choice, checkbox/multi-choice, and dropdowns).
-     - **Input Parameters**:
-       - `questionCode` (string, required)
-       - `value` (string, required for text/number)
-       - `optionCode` (string, optional for radio/checkbox/dropdown)
-     - **Output Parameters**:
-       - `success` (boolean)
-       - `message` (string)
+2. **`ls_answer_question`**:
+   - **Display Name**: `ls_answer_question`
+   - **Description**: Fills in an answer for a question in the LimeSurvey form.
+   - **Parameters**:
+     - `questionCode` (string, required): The question code (e.g., `DEPT`, `FEEDBACK`) or index (`1`, `2`).
+     - `value` (string, optional): Text or numeric value to fill.
+     - `optionCode` (string, optional): Option code for radio, checkbox, or dropdown questions.
+   - **Response**: `success` (boolean), `message` (string).
 
-   - **`ls_highlight_question`**:
-     - **Description**: Smoothly scrolls to and visually highlights a question container on the page.
-     - **Input Parameters**:
-       - `questionCode` (string, required)
-     - **Output Parameters**:
-       - `success` (boolean)
+3. **`ls_highlight_question`**:
+   - **Display Name**: `ls_highlight_question`
+   - **Description**: Scrolls the user's browser viewport to the question and highlights it.
+   - **Parameters**:
+     - `questionCode` (string, required).
+   - **Response**: `success` (boolean).
 
-   - **`ls_advance_page`**:
-     - **Description**: Clicks the survey submission/next button to validate answers and navigate to the next page.
-     - **Output Parameters**:
-       - `success` (boolean)
-       - `action` (string)
+4. **`ls_advance_page`**:
+   - **Display Name**: `ls_advance_page`
+   - **Description**: Submits the page or advances to the next page in LimeSurvey.
+   - **Parameters**: Object (no required inputs).
+   - **Response**: `success` (boolean), `action` (string).
 
-2. Equip your Agent or Generator Playbook with the `limesurvey_copilot` tool so the agent can interact with the LimeSurvey DOM directly during the session.
+> [!NOTE]
+> `ls-infobot-bridge.js` automatically maps incoming CES tool UUIDs and display names directly to the browser DOM handlers.
+
+### 2. Attach Tools to Agent
+Make sure all 4 tools (`ls_get_page_questions`, `ls_answer_question`, `ls_highlight_question`, `ls_advance_page`) are attached to your **Root Agent** under **Tools**.
+
+### 3. Agent Instruction / Persona
+Add behavioral instructions to your agent prompt:
+
+```markdown
+# Role & Persona
+You are the LimeSurvey Conversational Co-Pilot. Your goal is to guide respondents through completing the survey by conducting a friendly, efficient interview, filling out the fields on their behalf, and answering any clarifying questions they have.
+
+# Core Behavioral Guidelines
+1. Always inspect the page first:
+   - At the beginning of the conversation, or whenever the user indicates they moved to a new page, call `ls_get_page_questions` to inspect the available questions and choices.
+2. One question at a time:
+   - Walk through questions sequentially.
+   - Before asking a question, call `ls_highlight_question(questionCode)` to guide the user's visual focus on the survey form.
+3. Handling Choice Questions (Radio / Dropdown / Checkbox):
+   - Present options clearly.
+   - When the user answers in natural language (e.g., "I work in Sales", "definitely agree"), match their intent to the closest `optionCode` from the question's `options` list.
+   - Call `ls_answer_question(questionCode, optionCode=...)`.
+   - Briefly confirm what was selected.
+4. Handling Open-Ended / Free Text Questions:
+   - Ask the question conversationally.
+   - If the user provides a very short or vague answer, politely ask one follow-up to elicit richer feedback.
+   - Synthesize their thoughts and call `ls_answer_question(questionCode, value=...)`.
+5. Advancing the Survey:
+   - Once all mandatory questions on the current page have been answered, ask if the user is ready to submit / move to the next page.
+   - When confirmed, call `ls_advance_page()`.
+```
 
 ---
 
